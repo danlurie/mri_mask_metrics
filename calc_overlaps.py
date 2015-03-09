@@ -1,12 +1,10 @@
 import sys
 import os
-#import argparse
 import numpy as np
 import pandas as pd
 import nibabel as nb
 import xml.etree.ElementTree as ET
 from nipype.algorithms import metrics
-#from nipype.interfaces import afni as afni
 
 def divbz(array1, array2):
     """
