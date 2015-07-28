@@ -1,10 +1,12 @@
 import sys
 import os
+import argparse
 import numpy as np
 import pandas as pd
 import nibabel as nb
 import xml.etree.ElementTree as ET
 from nipype.algorithms import metrics
+from nipype.interfaces import afni as afni
 
 def divbz(array1, array2):
     """
@@ -69,24 +71,6 @@ def roi_overlap(atlas_data, mask_data):
         print('Atlas and mask must be the same dimensions!')
 
 def get_atlas_labels(path_to_xml):
-    """
-    Grab ROI labels from an XML atlas description file.
-
-    Parameters
-    ----------
-    path_to_xml : string
-         Location of an XML file containing atlas metadata.
-
-    Returns
-    -------
-    array_like
-        List of ROI names as strings.
-
-    Notes
-    -----
-    For example metadata files, see $FSLDIR/data/atlases
-    """
-
     tree = ET.parse(path_to_xml)
     root = tree.getroot()
     label_list = []
